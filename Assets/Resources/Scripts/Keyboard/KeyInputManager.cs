@@ -17,7 +17,9 @@ public static class KeyInputManager {
 
     private static void handleEnter() {
         wordLength = wordInput.Length;
-        if (wordLength == 5) {
+        if (wordLength != 5) GameEvents.shortWordTried.Invoke();        
+        else if (!WordValidator.wordIsValid(wordInput)) GameEvents.invalidWordTried.Invoke();
+        else {
             GameEvents.wordEntered.Invoke(wordInput);
             wordInput = "";
         }

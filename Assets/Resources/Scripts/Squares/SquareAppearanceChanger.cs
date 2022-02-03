@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public static class SquareImageChanger {
+public static class SquareAppearanceChanger {
     private static Sprite green;
     private static Sprite yellow;
     private static Sprite grey;
     private static Sprite blank;
 
-    static SquareImageChanger() {
+    static SquareAppearanceChanger() {
         green = Resources.Load<Sprite>("Sprites/green");
         yellow = Resources.Load<Sprite>("Sprites/yellow");
         grey = Resources.Load<Sprite>("Sprites/grey");
@@ -27,5 +28,11 @@ public static class SquareImageChanger {
                 imageComponent.sprite = grey;
                 break;
         }
+    }
+
+    public static void changeTextColour(GameObject square, Color colour) {
+        Transform textChild = square.transform.GetChild(0);
+        TextMeshProUGUI textComponent = textChild.GetComponent<TextMeshProUGUI>();
+        textComponent.color = colour;
     }
 }

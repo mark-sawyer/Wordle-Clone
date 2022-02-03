@@ -1,10 +1,10 @@
 
 public static class WordLists {
     public static readonly string[] answers;
-    public static readonly string[] guesses;
+    public static readonly string[] onlyGuesses;
 
     static WordLists() {
         answers = WordLoader.getWords(Constants.ANSWERS);
-        guesses = WordLoader.getWords(Constants.ALLOWED_GUESSES);
+        onlyGuesses = WordLoader.getWords(Constants.ALLOWED_GUESSES);
     }
 }

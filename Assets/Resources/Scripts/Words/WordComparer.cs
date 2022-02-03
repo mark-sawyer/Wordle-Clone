@@ -1,3 +1,4 @@
+using UnityEngine;
 
 public static class WordComparer {
     public static LetterColour[] compareWords(string answer, string guess) {

@@ -1,8 +1,6 @@
 using UnityEngine;
 
 public static class SquareTyper {
-    private static int currentRow = 1;
-
     public static void initialiseSquareTyper() {
         GameEvents.wordUpdated.AddListener(updateWord);
     }
@@ -15,7 +13,7 @@ public static class SquareTyper {
             if (i >= wordLength) charToUse = ' ';
             else charToUse = word[i];
 
-            square = SquareGetter.atPos(currentRow, i + 1);
+            square = SquareGetter.atPos(RowManager.getRow(), i + 1);
             SquareLetterUpdater.update(square, charToUse);
         }
     }

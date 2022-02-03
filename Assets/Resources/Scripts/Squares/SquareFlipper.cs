@@ -8,12 +8,14 @@ public static class SquareFlipper {
             yield return null;
         }
 
-        SquareImageChanger.changeSquareColour(square, colour);
-        SquareTextColourChanger.changeColour(square, Color.white);
+        SquareAppearanceChanger.changeSquareColour(square, colour);
+        SquareAppearanceChanger.changeTextColour(square, Color.white);
 
         for (float angle = 90; angle >= 0; angle -= Constants.ANGLE_CHANGE_PER_FRAME) {
             square.transform.localEulerAngles = new Vector3(angle, 0, 0);
             yield return null;
         }
+
+        GameEvents.flipCompleted.Invoke();
     }
 }
