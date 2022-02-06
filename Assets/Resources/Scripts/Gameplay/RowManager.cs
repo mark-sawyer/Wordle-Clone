@@ -2,11 +2,15 @@
 public static class RowManager {
     private static int currentRow = 1;
 
+    public static void initialiseRowManager() {
+        GameEvents.revealComplete.AddListener(incrementRow);
+    }
+
     public static int getRow() {
         return currentRow;
     }
 
-    public static void incrementRow() {
+    private static void incrementRow() {
         currentRow++;
     }
 

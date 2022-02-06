@@ -10,4 +10,10 @@ public static class SquareLetterUpdater {
         TextMeshProUGUI textComponent = textTransform.GetComponent<TextMeshProUGUI>();
         textComponent.text = capitalLetter;
     }
+
+    public static void reset(GameObject square) {
+        Transform textTransform = square.transform.GetChild(0);
+        TextMeshProUGUI textComponent = textTransform.GetComponent<TextMeshProUGUI>();
+        textComponent.text = "";
+    }
 }

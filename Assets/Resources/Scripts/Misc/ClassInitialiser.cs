@@ -6,6 +6,13 @@ public class ClassInitialiser : MonoBehaviour {
 
     void Start() {
         SquareTyper.initialiseSquareTyper();
+        WordEnteredResolver.initialiseWordEnteredResolver();
+        ScreenKeyUpdater.initialiseScreenKeyUpdater();
+        SquareWobbler.initialiseSquareWobbler();
+
+        RowManager.initialiseRowManager();  // This must be before the GameOverChecker initialisation
+        GameOverChecker.initialiseGameOverChecker();
+
         AnswerHolder.getNewAnswer();
     }
 }

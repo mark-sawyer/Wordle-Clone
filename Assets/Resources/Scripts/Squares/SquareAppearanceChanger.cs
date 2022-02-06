@@ -9,10 +9,10 @@ public static class SquareAppearanceChanger {
     private static Sprite blank;
 
     static SquareAppearanceChanger() {
-        green = Resources.Load<Sprite>("Sprites/green");
-        yellow = Resources.Load<Sprite>("Sprites/yellow");
-        grey = Resources.Load<Sprite>("Sprites/grey");
-        blank = Resources.Load<Sprite>("Sprites/blank");
+        green = Resources.Load<Sprite>(Constants.GREEN_SPRITE_ADDRESS);
+        yellow = Resources.Load<Sprite>(Constants.YELLOW_SPRITE_ADDRESS);
+        grey = Resources.Load<Sprite>(Constants.GREY_SPRITE_ADDRESS);
+        blank = Resources.Load<Sprite>(Constants.BLANK_SPRITE_ADDRESS);
     }
 
     public static void changeSquareColour(GameObject square, LetterColour colour) {
@@ -28,6 +28,12 @@ public static class SquareAppearanceChanger {
                 imageComponent.sprite = grey;
                 break;
         }
+    }
+
+    public static void resetSquareAppearance(GameObject square) {
+        Image imageComponent = square.GetComponent<Image>();
+        imageComponent.sprite = blank;
+        changeTextColour(square, Color.black);
     }
 
     public static void changeTextColour(GameObject square, Color colour) {

@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class GameUpdater : MonoBehaviour {
     private Action gameUpdater;
-    private SquareRevealer squareRevealer;
 
     private void Start() {
-        squareRevealer = GetComponent<SquareRevealer>();
         gameUpdater = allowInput;
         GameEvents.wordEntered.AddListener(turnOffInput);
-        GameEvents.revealComplete.AddListener(turnOnInput);
+        GameEvents.invalidWordTried.AddListener(turnOffInput);
+        GameEvents.inputAllowed.AddListener(turnOnInput);
+        GameEvents.newGameStarted.AddListener(turnOnInput);
+        GameEvents.victoryWobbleComplete.AddListener(turnOnNewGameInput);
     }
 
     private void Update() {
@@ -17,15 +18,34 @@ public class GameUpdater : MonoBehaviour {
     }
 
     private void allowInput() {
-        KeyCode key = KeyInputDetector.returnKeyInput();
-        KeyInputManager.updateWordInput(key);
+        KeyCode key = detectInput();
+        KeyInputManager.handleInput(key);
+    }
+
+    private void allowNewGameInput() {
+        KeyCode key = detectInput();
+        if (key == Constants.NEW_GAME_KEY) KeyInputManager.handleInput(key);
     }
 
     private void turnOffInput(string s) {
         gameUpdater = () => { };
     }
 
+    private void turnOffInput() {
+        gameUpdater = () => { };
+    }
+
     private void turnOnInput() {
         gameUpdater = allowInput;
+    }
+
+    private void turnOnNewGameInput() {
+        gameUpdater = allowNewGameInput;
+    }
+
+    private KeyCode detectInput() {
+        KeyCode key = KeyInputDetector.returnKeyInput();
+        if (key == KeyCode.None) key = MouseInputDetector.returnMouseInput();
+        return key;
     }
 }
