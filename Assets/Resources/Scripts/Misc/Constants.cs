@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public static class Constants {
-    public static readonly string ALLOWED_GUESSES = "wordle-allowed-guesses.txt";
-    public static readonly string ANSWERS = "wordle-answers-alphabetical.txt";
+    public static readonly string ALLOWED_GUESSES = "wordle-allowed-guesses";
+    public static readonly string ANSWERS = "wordle-answers-alphabetical";
 
     public static readonly string GREEN_SPRITE_ADDRESS = "Sprites/Letter Colours/green";
     public static readonly string YELLOW_SPRITE_ADDRESS = "Sprites/Letter Colours/yellow";

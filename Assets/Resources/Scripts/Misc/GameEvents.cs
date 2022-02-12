@@ -9,6 +9,7 @@ public static class GameEvents {
     public static readonly UnityEvent<string> wordDecreased = new UnityEvent<string>();
     public static readonly UnityEvent invalidWordTried = new UnityEvent();
     public static readonly UnityEvent wordFound = new UnityEvent();
+    public static readonly UnityEvent playerLost = new UnityEvent();
     public static readonly UnityEvent inputAllowed = new UnityEvent();
     public static readonly UnityEvent flipCompleted = new UnityEvent();
     public static readonly UnityEvent revealComplete = new UnityEvent();

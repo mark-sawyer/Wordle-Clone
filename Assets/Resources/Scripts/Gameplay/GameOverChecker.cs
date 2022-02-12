@@ -16,6 +16,9 @@ public static class GameOverChecker {
         else if (RowManager.getRow() - 1 < Constants.NUMBER_OF_ROWS) {
             GameEvents.inputAllowed.Invoke();
         }
+        else {
+            GameEvents.playerLost.Invoke();
+        }
     }
 
     private static bool allSquaresAreGreen() {

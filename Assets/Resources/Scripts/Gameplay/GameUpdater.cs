@@ -10,6 +10,7 @@ public class GameUpdater : MonoBehaviour {
         GameEvents.invalidWordTried.AddListener(turnOffInput);
         GameEvents.inputAllowed.AddListener(turnOnInput);
         GameEvents.newGameStarted.AddListener(turnOnInput);
+        GameEvents.playerLost.AddListener(turnOnNewGameInput);
         GameEvents.victoryWobbleComplete.AddListener(turnOnNewGameInput);
     }
 
@@ -24,15 +25,19 @@ public class GameUpdater : MonoBehaviour {
 
     private void allowNewGameInput() {
         KeyCode key = detectInput();
-        if (key == Constants.NEW_GAME_KEY) KeyInputManager.handleInput(key);
+        if (key == Constants.NEW_GAME_KEY | key == KeyCode.Escape) KeyInputManager.handleInput(key);
+    }
+    private void allowEscapeInput() {
+        KeyCode key = detectInput();
+        if (key == KeyCode.Escape) KeyInputManager.handleInput(key);
     }
 
     private void turnOffInput(string s) {
-        gameUpdater = () => { };
+        gameUpdater = allowEscapeInput;
     }
 
     private void turnOffInput() {
-        gameUpdater = () => { };
+        gameUpdater = allowEscapeInput;
     }
 
     private void turnOnInput() {
